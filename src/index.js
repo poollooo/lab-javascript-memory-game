@@ -60,6 +60,8 @@ window.addEventListener('load', (event) => {
         console.log(memoryGame.pickedCards)
 
         if ((memoryGame.checkIfPair(memoryGame.pickedCards[0], memoryGame.pickedCards[1])) === true) {
+          myCards[numberOfClicks - 2].classList.toggle('blocked')
+          myCards[numberOfClicks - 1].classList.toggle('blocked')
           console.log('they should be same');
           // memoryGame.pickedCards = [];
         } else {
