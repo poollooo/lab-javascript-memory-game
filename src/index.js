@@ -76,6 +76,7 @@ window.addEventListener('load', (event) => {
       } else if (numberOfClicks % 2 === 1) {
         memoryGame.pickedCards.push(myDataCardName)
       }
+      memoryGame.checkIfFinished();
       // console.log(`myCards ${numberOfClicks} is : ${myCards[numberOfClicks].classList}`)
     });
     console.log(`Card clicked: ${card}`);
