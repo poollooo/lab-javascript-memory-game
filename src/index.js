@@ -45,25 +45,36 @@ window.addEventListener('load', (event) => {
 
   // Bind the click event of each element to a function
   let numberOfClicks = 0
+  let myCards = [];
 
   document.querySelectorAll('.card').forEach((card) => {
     card.addEventListener('click', () => {
       let myDataCardName = card.dataset.cardName
       card.classList.toggle('turned')
+      myCards.push(card)
+      console.log(myCards)
       numberOfClicks++;
+
       if (numberOfClicks % 2 === 0) {
         memoryGame.pickedCards.push(myDataCardName)
         console.log(memoryGame.pickedCards)
+
         if ((memoryGame.checkIfPair(memoryGame.pickedCards[0], memoryGame.pickedCards[1])) === true) {
           console.log('they should be same');
           // memoryGame.pickedCards = [];
         } else {
+
           console.log('raté')
+          setTimeout(() => {
+            myCards[numberOfClicks - 2].classList.toggle('turned')
+            myCards[numberOfClicks - 1].classList.toggle('turned')
+          }, 1000)
         }
         memoryGame.pickedCards = [];
       } else if (numberOfClicks % 2 === 1) {
         memoryGame.pickedCards.push(myDataCardName)
       }
+      // console.log(`myCards ${numberOfClicks} is : ${myCards[numberOfClicks].classList}`)
     });
     console.log(`Card clicked: ${card}`);
   });
